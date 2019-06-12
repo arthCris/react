@@ -44,10 +44,8 @@ class Contact extends Component{
                     <ListItemAvatar>
                         <Icon color="primary" style={{fontSize: 45}}>account_circle</Icon>
                     </ListItemAvatar>    
-                        <ListItemText
-                            primary={name}
-                            />
-                            <br/>
+                        <br/>
+                            
                                 <Typography
                                     component="span"
                                     variant="body2"
