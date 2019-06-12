@@ -17,10 +17,7 @@ const useStyles = makeStyles({
       width: '100%',
       maxWidth: 360,
       backgroundColor: "gray",
-    },
-    inline: {
-      display: 'inline',
-    },
+    }
   });
 
   const Class = () => {
@@ -43,18 +40,13 @@ class Contact extends Component{
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
                         <Icon color="primary" style={{fontSize: 45}}>account_circle</Icon>
-                    </ListItemAvatar>    
-                        <br/>
-                            
-                                <Typography
-                                    component="span"
-                                    variant="body2"
-                                    className={Class.inline}
-                                    color="textPrimary"
-                                    >
-                                    {email}
-                                </Typography>
-                                {number}
+                    </ListItemAvatar>  
+                    <ListItemText primary={<Typography style={{fontSize:25}}>{name}</Typography>}
+                        secondary={<Typography>{email}<br/>{number}</Typography>}
+                    />
+                    </ListItem>
+                                
+                                
                                 <ListItemSecondaryAction style={{ paddingRight:40 }}>
                                 <IconButton edge="end" aria-label="Delete">
                                     <Icon>create</Icon>
@@ -64,13 +56,12 @@ class Contact extends Component{
                                 <IconButton 
                                 edge="end" 
                                 aria-label="Delete"
-                                onClick={this.onDeleteClick.bind
-                                (this, id, dispatch)}>
+                                onClick={this.onDeleteClick.bind(this, id, dispatch)}>
                                     <Icon>delete</Icon>
                                 </IconButton>
                                 </ListItemSecondaryAction>
                                 
-                </ListItem>
+                
             </List>
         )}}
         </Consumer>

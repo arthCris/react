@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import Buttons from './Buttons';
+import Buttons from './Buttons';
 
 import TextField from '@material-ui/core/TextField';
 
@@ -18,7 +18,7 @@ export class AddContact extends Component {
     }
 
     onChange = e =>this.setState({
-        [e.target.name]: [e.target.value]
+        [e.target.name]: e.target.value
     })
 
     render() {
@@ -57,12 +57,12 @@ export class AddContact extends Component {
                     onChange={this.onChange}
                 />
                 <br/><br/>
-                    <input 
+                    {/* <input 
                         type="submit"
                         name="submit"
                         value="submit"
-                        />
-                    {/* <Buttons name="submit" type="submit"/> */}
+                        /> */}
+                    <Buttons name="submit" type="submit"/>
                 <br/>
                 </form>
             </div>
