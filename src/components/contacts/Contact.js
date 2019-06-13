@@ -42,7 +42,7 @@ class Contact extends Component{
                         <Icon color="primary" style={{fontSize: 45}}>account_circle</Icon>
                     </ListItemAvatar>  
                     <ListItemText primary={<Typography style={{fontSize:25}}>{name}</Typography>}
-                        secondary={<Typography>{email}<br/>{number}</Typography>}
+                        secondary={<Typography>{email}<br/><p>{number}</p></Typography>}
                     />
                     </ListItem>
                                 
