@@ -15,6 +15,7 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
       flexGrow: 1,
+      display: 'inline'
     },
   }));
 
@@ -26,17 +27,20 @@ const Header = () => {
             <Toolbar>
             <Typography align="left" variant="h6" className={classes.title}>
                 Contact Manager
-            </Typography>
-            <IconButton color="inherit">
-              <Link to="/">
-                <Icon>home</Icon>
+              </Typography>
+              
+              <Link to="contacts/add" style={{textDecoration: 'none',color: 'white'}}>
+                <IconButton color="inherit">
+                    <Icon>add</Icon>
+                </IconButton>
               </Link>
-            </IconButton>
-            <IconButton color="inherit">
-              <Link to="contacts/add">
-                <Icon>add</Icon>
+              
+              <Link to="/" style={{textDecoration: 'none',color: 'white',marginRight: 30}}>
+                <IconButton color="inherit">
+                    <Icon>home</Icon>
+                </IconButton>
               </Link>
-            </IconButton>
+              
             </Toolbar>
         </AppBar>
         </div>

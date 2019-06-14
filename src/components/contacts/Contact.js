@@ -10,6 +10,7 @@ import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import IconButton from '@material-ui/core/IconButton';
+import { Link } from 'react-router-dom';
 
 
 const useStyles = makeStyles({
@@ -30,7 +31,7 @@ class Contact extends Component{
     };
     
     render(){
-        const { id, name, email, number } = this.props.contact;
+        const { id, name, email, phone } = this.props.contact;
         return(
         <Consumer>
             {value => {
@@ -39,29 +40,29 @@ class Contact extends Component{
             <List className={Class.root}>
                 <ListItem alignItems="flex-start">
                     <ListItemAvatar>
-                        <Icon color="primary" style={{fontSize: 45}}>account_circle</Icon>
+                        <Icon color="primary" style={{fontSize: 60, margin: 15}}>account_circle</Icon>
                     </ListItemAvatar>  
                     <ListItemText primary={<Typography style={{fontSize:25}}>{name}</Typography>}
-                        secondary={<Typography>{email}<br/><p>{number}</p></Typography>}
+                        secondary={<Typography>{email}<br/>{phone}</Typography>
+                    }
                     />
-                    </ListItem>
+                </ListItem>
+                        <ListItemSecondaryAction style={{ paddingRight:40 }}>
+                        <Link style={{textDecoration:'none'}} to={`/contacts/edit/${id}`}>
+                        <IconButton edge="end" aria-label="Delete">
+                            <Icon>create</Icon>
+                        </IconButton>
+                        </Link>
+                        </ListItemSecondaryAction>
+                        <ListItemSecondaryAction>
+                        <IconButton 
+                        edge="end" 
+                        aria-label="Delete"
+                        onClick={this.onDeleteClick.bind(this, id, dispatch)}>
+                            <Icon>delete</Icon>
+                        </IconButton>
+                        </ListItemSecondaryAction>
                                 
-                                
-                                <ListItemSecondaryAction style={{ paddingRight:40 }}>
-                                <IconButton edge="end" aria-label="Delete">
-                                    <Icon>create</Icon>
-                                </IconButton>
-                                </ListItemSecondaryAction>
-                                <ListItemSecondaryAction>
-                                <IconButton 
-                                edge="end" 
-                                aria-label="Delete"
-                                onClick={this.onDeleteClick.bind(this, id, dispatch)}>
-                                    <Icon>delete</Icon>
-                                </IconButton>
-                                </ListItemSecondaryAction>
-                                
-                
             </List>
         )}}
         </Consumer>

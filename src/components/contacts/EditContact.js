@@ -1,11 +1,8 @@
 import React, { Component } from 'react'
-import uuid from 'uuid';
-// import Buttons from './Buttons';
 
-// import { makeStyles } from '@material-ui/styles'
 import { Consumer } from '../../context';
 import TextField from '@material-ui/core/TextField';
-// import Button from '@material-ui/core/Button';
+import axios from 'axios';
 
 const buttonStyle = {
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
@@ -17,28 +14,31 @@ const buttonStyle = {
     padding: '0 30px',
 }
 
-export class AddContact extends Component {
+export class EditContact extends Component {
     state = {
         name: '',
         email: '',
         phone: ''
     }
 
+    async componentDidMount(){
+        const { id } = this.props.match.params;
+        console.log({id});
+        const res = await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`);
+
+        console.log(res.data);
+        const contact = res.data;
+        this.setState({
+            name: contact.name,
+            email: contact.email,
+            phone: contact.phone
+        })
+    }
+
     onSubmit = (dispatch, e) =>{
         e.preventDefault();
 
-        const { name, email, phone } = this.state;
-
-        const newContact = {
-            id: uuid(),
-            name,
-            email,
-            phone
-        }
-        console.log(newContact);
-
-        dispatch({type: 'ADD_CONTACT', payload: newContact});
-
+        
         this.setState({
             name:'',
             email:'',
@@ -113,4 +113,4 @@ export class AddContact extends Component {
     }
 }
 
-export default AddContact
+export default EditContact
